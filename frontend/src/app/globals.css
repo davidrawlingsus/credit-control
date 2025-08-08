@@ -1,0 +1,25 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; background: #fafafa; color: #111; }
+a { color: #0366d6; text-decoration: none; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.5rem; border-bottom: 1px solid #eee; text-align: left; vertical-align: top; }
+th { background: #f0f3f6; }
+button { cursor: pointer; }
+.btn { padding: 0.35rem 0.6rem; border-radius: 6px; border: 1px solid #d0d7de; background: #f6f8fa; }
+.btn:hover { background: #eef1f4; }
+.btn-primary { background: #1f6feb; border-color: #1b62d2; color: #fff; }
+.btn-primary:hover { background: #1a61d1; }
+.btn-danger { background: #d73a49; border-color: #b92532; color: #fff; }
+.btn-danger:hover { background: #c5303d; }
+.muted { color: #666; }
+.row { display: flex; gap: 0.5rem; align-items: center; }
+.space { height: 8px; }
+.badge { display: inline-block; padding: 2px 6px; border-radius: 10px; background: #eee; font-size: 12px; }
+.expand { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0.5rem; margin: 0.5rem 0; }
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; padding: 1rem; z-index: 50; }
+.modal { background: #fff; border-radius: 10px; width: 100%; max-width: 720px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border-bottom: 1px solid #eee; }
+.modal-body { padding: 1rem; max-height: 70vh; overflow: auto; white-space: pre-wrap; }
+
+
