@@ -1,8 +1,9 @@
 const { Pool } = require('pg');
 const { logger } = require('../utils/logger');
 
-// Use SQLite for local development, PostgreSQL for production
-const useSQLite = process.env.NODE_ENV !== 'production' && !process.env.DATABASE_URL;
+// Use SQLite when DATABASE_URL is not provided (fallback for dev/staging)
+// In production with a Postgres service, set DATABASE_URL to enable PG
+const useSQLite = !process.env.DATABASE_URL;
 
 let pool = null;
 

@@ -23,6 +23,7 @@ const testRoutes = require('./routes/test');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+// Railway provides PORT; ensure we bind to 0.0.0.0
 
 // Security middleware
 app.use(helmet({
@@ -190,7 +191,7 @@ async function initializeApp() {
     logger.info('Cron jobs initialized');
 
     // Start server
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       logger.info(`Server running on port ${PORT}`);
       logger.info(`Environment: ${process.env.NODE_ENV}`);
       logger.info(`Health check: http://localhost:${PORT}/api/health`);
