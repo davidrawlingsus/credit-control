@@ -38,8 +38,30 @@ app.use(helmet({
 }));
 
 // CORS configuration
+// Allow a specific origin via CORS_ORIGIN, and also permit dynamic Vercel subdomains (*.vercel.app) and localhost
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: function (origin, callback) {
+    const explicitOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
+
+    // No origin header (e.g., curl, server-to-server) → allow
+    if (!origin) return callback(null, true);
+
+    try {
+      const url = new URL(origin);
+      const hostname = url.hostname || '';
+      const isExplicitAllowed = origin === explicitOrigin;
+      const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
+      const isVercel = hostname.endsWith('.vercel.app');
+
+      if (isExplicitAllowed || isLocalhost || isVercel) {
+        return callback(null, true);
+      }
+    } catch (_) {
+      // If origin is malformed, deny
+    }
+
+    return callback(null, false);
+  },
   credentials: true,
   optionsSuccessStatus: 200,
 };
