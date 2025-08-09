@@ -5,7 +5,7 @@
     "buildCommand": "npm --prefix backend install --omit=dev && npm --prefix frontend install --omit=dev && npm run build:frontend"
   },
   "deploy": {
-    "startCommand": "(npm start &) && (cd frontend && npm start)",
+    "startCommand": "npm start",
     "healthcheckPath": "/api/health",
     "healthcheckTimeout": 300,
     "restartPolicyType": "ON_FAILURE",
