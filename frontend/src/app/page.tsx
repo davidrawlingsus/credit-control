@@ -30,7 +30,11 @@ type ChaseEmail = {
   overdue_day?: number;
 };
 
-const backend = process.env.BACKEND_URL || 'http://localhost:3001';
+// Prefer public env var for client-side usage; fall back to Next.js env from next.config.js, then localhost
+const backend =
+  (process.env.NEXT_PUBLIC_BACKEND_URL as string | undefined) ||
+  (process.env.BACKEND_URL as string | undefined) ||
+  'http://localhost:3001';
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function HomePage() {
